@@ -13,7 +13,8 @@
     --cinza-escuro: #3C3C3C;
     --tec-card-size: 150px;
     --proj-card-size: 200px;
-    --image-size: 150px;
+    --image-size: 200px;
+    --footer-image-size: 50px;
     overflow-x: hidden;
 }
 
@@ -89,14 +90,11 @@ section .info h3{
     cursor: pointer;
 }
 
-section .img{
-    background-color: var(--white);
+section .img img{
     height: var(--image-size);
     width: var(--image-size);
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border: 4px solid white;
 }
 
 /*TEC*/
@@ -119,12 +117,13 @@ section .tec .card{
 }
 
 section .tec .card img{
-    width: 10rem;
+    width: 100px;
 }
 
 /*SOBRE*/
 
 section .sobre{
+    width: 80%;
     display: block;
     text-align: center;
     margin-bottom: 60px;
@@ -166,8 +165,17 @@ section .projects p{
 /*FOOTER*/
 
 footer{
-    text-align: center;
     padding-bottom: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+footer .card img{
+    width: var(--footer-image-size);
+    height: var(--footer-image-size);
 }
 
 /*RESPONSE*/
@@ -176,6 +184,9 @@ footer{
         font-size: 55%;
         --tec-card-size: 100px;
         --proj-card-size: 150px;
+    }
+    section .tec .card img{
+        width: 60px;
     }
 }
 
@@ -189,9 +200,13 @@ footer{
     section .profile{
         gap: 30px;
     }
+
+    section .tec .card img{
+        width: 40px;
+    }
 }
 
-@media (max-width: 320px){
+@media (max-width: 420px){
     :root{
         font-size: 35%;
         --tec-card-size: 60px;
