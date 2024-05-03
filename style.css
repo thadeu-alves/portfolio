@@ -182,7 +182,7 @@ footer .card img{
 @media (max-width: 700px) {
     :root{
         font-size: 55%;
-        --tec-card-size: 100px;
+        --tec-card-size: 150px;
         --proj-card-size: 150px;
     }
     section .tec .card img{
@@ -193,7 +193,7 @@ footer .card img{
 @media (max-width: 520px) {
     :root{
         font-size: 50%;
-        --tec-card-size: 70px;
+        --tec-card-size: 100px;
         --proj-card-size: 120px;
     }
 
@@ -208,9 +208,9 @@ footer .card img{
 
 @media (max-width: 420px){
     :root{
-        font-size: 35%;
-        --tec-card-size: 60px;
-        --proj-card-size: 80px;
+        font-size: 60%;
+        --tec-card-size: 90px;
+        --proj-card-size: 100px;
         --image-size: 100px;
     }
 
