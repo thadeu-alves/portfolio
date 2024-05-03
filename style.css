@@ -62,12 +62,13 @@ section .info h2{
     margin: 10px 0;
 }
 
-section .info h3{
+section .info button{
     background-color: var(--white);
+    border: none;
     padding: 2px 30px;
     border-radius: 10px;
     font-weight: lighter;
-    font-size: 1.1rem;
+    font-size: 2.1rem;
     cursor: pointer;
 }
 
