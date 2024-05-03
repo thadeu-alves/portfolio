@@ -206,15 +206,28 @@ footer .card img{
     }
 }
 
-@media (max-width: 420px){
+@media (max-width: 480px){
     :root{
-        font-size: 60%;
-        --tec-card-size: 90px;
-        --proj-card-size: 100px;
+        font-size: 50%;
+        --tec-card-size: 60px;
+        --proj-card-size: 80px;
         --image-size: 100px;
     }
 
     section .profile{
         gap: 10px;
+    }
+}
+
+@media (max-width: 320px){
+    :root{
+        font-size: 30%;
+        --tec-card-size: 45px;
+        --proj-card-size: 50px;
+        --image-size: 100px;
+    }
+
+    section .profile{
+        gap: 5px;
     }
 }
