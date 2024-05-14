@@ -12,7 +12,7 @@
     --white: #fff;
     --cinza-escuro: #3C3C3C;
     --tec-card-size: 150px;
-    --proj-card-size: 200px;
+    --proj-card-size: 260px;
     --image-size: 200px;
     --footer-image-size: 50px;
     overflow-x: hidden;
@@ -62,9 +62,9 @@ section .info h2{
     margin: 10px 0;
 }
 
-section .info button{
+section .info a{
+    text-decoration: none;
     background-color: var(--white);
-    border: none;
     padding: 2px 30px;
     border-radius: 10px;
     font-weight: lighter;
@@ -119,7 +119,7 @@ section .sobre p{
 /*PROJECTS*/
 
 section .projects{
-    width: 90%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -129,7 +129,20 @@ section .projects{
 section .projects h3{
     margin-bottom: 5px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
+
+section .projects h3 img{
+    height: 18px;
+}
+
+section .projects a{
+    text-decoration: none;
+    color: black;
+}
+
 
 section .projects .card{
     height: var(--proj-card-size);
@@ -138,11 +151,8 @@ section .projects .card{
     border-radius: 10px;
 }
 
-section .projects p{
-    position: absolute;
-    right: 0;
-    top: 8;
-}
+
+
 
 /*FOOTER*/
 
@@ -165,7 +175,7 @@ footer .card img{
     :root{
         font-size: 55%;
         --tec-card-size: 150px;
-        --proj-card-size: 150px;
+        --proj-card-size: 200px;
     }
     section .tec .card img{
         width: 60px;
@@ -174,7 +184,7 @@ footer .card img{
 
 @media (max-width: 520px) {
     :root{
-        font-size: 50%;
+        font-size: 60%;
         --tec-card-size: 100px;
         --proj-card-size: 120px;
     }
@@ -190,22 +200,44 @@ footer .card img{
 
 @media (max-width: 480px){
     :root{
-        font-size: 50%;
-        --tec-card-size: 60px;
-        --proj-card-size: 80px;
+        font-size: 60%;
+        --proj-card-size: 350px;
         --image-size: 100px;
+    }
+
+    section .tec{
+        width: 90%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    section .tec .card{
+        margin: 0 auto 20px auto;
     }
 
     section .profile{
         gap: 10px;
+        flex-direction: column-reverse;
+    }
+
+    section .projects{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+    }
+
+    section .projects h3{
+        margin-bottom: 25px;
+        font-size: 3rem;
     }
 }
 
 @media (max-width: 320px){
     :root{
-        font-size: 30%;
-        --tec-card-size: 45px;
-        --proj-card-size: 50px;
+        font-size: 55%;
+        --tec-card-size: 100px;
+        --proj-card-size: 200px;
         --image-size: 100px;
     }
 
