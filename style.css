@@ -12,7 +12,7 @@
     --white: #fff;
     --cinza-escuro: #3C3C3C;
     --tec-card-size: 150px;
-    --proj-card-size: 260px;
+    --proj-card-size: 400px;
     --image-size: 200px;
     --footer-image-size: 50px;
     overflow-x: hidden;
@@ -70,6 +70,36 @@ section .info a{
     font-weight: lighter;
     font-size: 2.1rem;
     cursor: pointer;
+    position: relative;
+    color: var(--cinza-escuro);
+}
+
+section .info a .text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--cinza-escuro);
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+section .info a .text:hover{
+    opacity: 1;
 }
 
 section .img img{
@@ -86,6 +116,7 @@ section .tec{
     display: flex;
     justify-content: space-between;
     margin-bottom: 60px;
+    position: relative;
 }
 
 section .tec .card{
@@ -100,6 +131,33 @@ section .tec .card{
 
 section .tec .card img{
     width: 100px;
+}
+
+section .tec .text{
+    position: absolute;
+    opacity: 0;
+    height: var(--tec-card-size);
+    width: var(--tec-card-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    background-color: var(--cinza-escuro);
+    color: white;
+    transition: .4s ease-in-out;
+    -webkit-transition: .4s ease-in-out;
+    -moz-transition: .4s ease-in-out;
+    -ms-transition: .4s ease-in-out;
+    -o-transition: .4s ease-in-out;
+}
+
+section .tec .text:hover{
+    opacity: 1;
+    top: 0;
 }
 
 /*SOBRE*/
@@ -121,7 +179,7 @@ section .sobre p{
 section .projects{
     width: 80%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     position: relative;
     margin-bottom: 60px;
 }
@@ -144,15 +202,50 @@ section .projects a{
 }
 
 
-section .projects .card{
+section .projects .card img{
     height: var(--proj-card-size);
     width: var(--proj-card-size);
     background-color: var(--white);
     border-radius: 10px;
+    box-shadow: 5px 2px 15px 1px rgba(0, 0, 0, .7);
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
 }
 
+section .projects .card{
+    position: relative;
+}
 
+section .projects .proj .text{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    opacity: 0;
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+}
 
+section .proj .text h1{
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 10px 20px;
+}
+
+section .projects .proj .text:hover{
+    opacity: 1;
+}
 
 /*FOOTER*/
 
@@ -174,7 +267,7 @@ footer .card img{
 @media (max-width: 700px) {
     :root{
         font-size: 55%;
-        --tec-card-size: 150px;
+        --tec-card-size: 100px;
         --proj-card-size: 200px;
     }
     section .tec .card img{
