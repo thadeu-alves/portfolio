@@ -226,6 +226,7 @@ section .projects .proj .text{
     background-color: rgba(0, 0, 0, .7);
     top: 0%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
@@ -235,6 +236,14 @@ section .projects .proj .text{
     -moz-transition: .3s ease-in-out;
     -ms-transition: .3s ease-in-out;
     -o-transition: .3s ease-in-out;
+    gap: 16px;
+}
+
+section .proj .text p{
+    font-size: 1.6rem;
+    max-width: 60%;
+    text-align: center;
+    color: white;
 }
 
 section .proj .text h1{
@@ -268,7 +277,7 @@ footer .card img{
     :root{
         font-size: 55%;
         --tec-card-size: 100px;
-        --proj-card-size: 200px;
+        --proj-card-size: 390px;
     }
     section .tec .card img{
         width: 60px;
@@ -279,7 +288,7 @@ footer .card img{
     :root{
         font-size: 60%;
         --tec-card-size: 100px;
-        --proj-card-size: 120px;
+        --proj-card-size: 350px;
     }
 
     section .profile{
@@ -323,6 +332,35 @@ footer .card img{
     section .projects h3{
         margin-bottom: 25px;
         font-size: 3rem;
+    }
+
+    section .projects .proj .text{
+        position: initial;
+        width: 100%;
+        background-color: transparent;
+        opacity: 1;
+        gap: 16px;
+        margin-top: 32px;
+        cursor: initial;
+    }
+    section .projects .proj .text h1{
+        cursor: pointer;
+        color: var(--cinza-escuro);
+        border-color: var(--cinza-escuro);
+    }
+
+    section .tec .card{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 12px;
+    }
+
+    section .tec .text{
+        position: initial;
+        opacity: 1;
+        background-color: transparent;
+        color: var(--cinza-escuro);
     }
 }
 
