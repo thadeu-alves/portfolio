@@ -182,6 +182,7 @@ section .projects{
     justify-content: center;
     position: relative;
     margin-bottom: 60px;
+    gap: 40px;
 }
 
 section .projects h3{
