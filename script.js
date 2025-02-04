@@ -21,11 +21,11 @@ async function fetchData() {
       }
     `;
   
-    const response = await fetch(CONFIG.API_URL, {
+    const response = await fetch("https://graphql.datocms.com/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${CONFIG.API_KEY}`
+        "Authorization": `Bearer d7b25d0581ed794313da676e1d7fa9`
       },
       body: JSON.stringify({ query })
     });
