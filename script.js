@@ -1,6 +1,7 @@
 const sobre = document.querySelector(".sobre");
 const projects = document.querySelector(".projects");
 
+
 async function fetchData() {
     const query = `
       {
@@ -20,11 +21,11 @@ async function fetchData() {
       }
     `;
   
-    const response = await fetch("https://graphql.datocms.com/", {
+    const response = await fetch(CONFIG.API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer d7b25d0581ed794313da676e1d7fa9`
+        "Authorization": `Bearer ${CONFIG.API_KEY}`
       },
       body: JSON.stringify({ query })
     });
