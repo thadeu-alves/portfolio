@@ -20,11 +20,11 @@ async function fetchData() {
       }
     `;
   
-    const response = await fetch(CONFIG.API_URL, {
+    const response = await fetch(process.env.API_URL || CONFIG.API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${CONFIG.API_KEY}`
+        "Authorization": `Bearer ${process.env.API_KEY ||CONFIG.API_KEY}`
       },
       body: JSON.stringify({ query })
     });
