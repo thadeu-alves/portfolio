@@ -48,7 +48,7 @@ projetos.map(e => {
                             <img src=${e.imagem.url}>
                             <div class="text">
                                 <p>${e.descricao}</p>
-                                <h1>view demo</h1>
+                                <h1>acessar</h1>
                             </div></a>
                         </div>
             </div>

@@ -133,6 +133,7 @@ section .tec .card img{
     width: 100px;
 }
 
+
 section .tec .text{
     position: absolute;
     opacity: 0;
@@ -159,6 +160,14 @@ section .tec .text:hover{
     opacity: 1;
     top: 0;
 }
+
+
+section .tec .card:first-child{
+    img{
+        width: 120px;
+    }
+}
+
 
 /*SOBRE*/
 
@@ -283,6 +292,13 @@ footer .card img{
     section .tec .card img{
         width: 60px;
     }
+
+    
+    section .tec .card:first-child{
+        img{
+            width: 80px;
+        }
+    }
 }
 
 @media (max-width: 520px) {
@@ -299,6 +315,14 @@ footer .card img{
     section .tec .card img{
         width: 40px;
     }
+
+    
+    section .tec .card:first-child{
+        img{
+            width: 60px;
+        }
+    }
+
 }
 
 @media (max-width: 480px){
@@ -363,6 +387,10 @@ footer .card img{
         background-color: transparent;
         color: var(--cinza-escuro);
     }
+
+    section .tec .card:first-child{
+        padding-top: 20px;
+    }
 }
 
 @media (max-width: 320px){
@@ -370,10 +398,16 @@ footer .card img{
         font-size: 55%;
         --tec-card-size: 100px;
         --proj-card-size: 200px;
-        --image-size: 100px;
+        --image-size: 150px;
     }
 
     section .profile{
         gap: 5px;
     }
+
+    section .tec .card:first-child{
+        padding-top: 20px;
+    }
+
+
 }
