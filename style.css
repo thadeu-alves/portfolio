@@ -187,7 +187,8 @@ section .sobre p{
 
 section .projects{
     width: 80%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: center;
     position: relative;
     margin-bottom: 60px;
@@ -283,6 +284,13 @@ footer .card img{
 }
 
 /*RESPONSE*/
+@media (max-width: 900px) {
+    section .projects{
+        grid-template-columns: initial;
+    }
+}
+
+
 @media (max-width: 700px) {
     :root{
         font-size: 55%;
@@ -292,6 +300,7 @@ footer .card img{
     section .tec .card img{
         width: 60px;
     }
+
 
     
     section .tec .card:first-child{
@@ -331,6 +340,8 @@ footer .card img{
         --proj-card-size: 350px;
         --image-size: 100px;
     }
+
+    
 
     section .tec{
         width: 90%;
