@@ -162,11 +162,6 @@ section .tec .text:hover{
 }
 
 
-section .tec .card:first-child{
-    img{
-        width: 120px;
-    }
-}
 
 
 /*SOBRE*/
@@ -303,11 +298,6 @@ footer .card img{
 
 
     
-    section .tec .card:first-child{
-        img{
-            width: 80px;
-        }
-    }
 }
 
 @media (max-width: 520px) {
@@ -326,11 +316,7 @@ footer .card img{
     }
 
     
-    section .tec .card:first-child{
-        img{
-            width: 60px;
-        }
-    }
+    
 
 }
 
@@ -399,9 +385,6 @@ footer .card img{
         color: var(--cinza-escuro);
     }
 
-    section .tec .card:first-child{
-        padding-top: 20px;
-    }
 }
 
 @media (max-width: 320px){
@@ -416,9 +399,6 @@ footer .card img{
         gap: 5px;
     }
 
-    section .tec .card:first-child{
-        padding-top: 20px;
-    }
 
 
 }
