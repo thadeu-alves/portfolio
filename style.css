@@ -25,9 +25,9 @@ body {
     background-color: var(--bg-color);
 }
 
-/*CONFIG DA SECTION*/
+/*CONFIG DA main*/
 
-section {
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +37,7 @@ section {
 
 /*PROFILE*/
 
-section .profile {
+main .profile {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,26 +45,26 @@ section .profile {
     gap: 60px;
 }
 
-section .info {
+main .info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-section .info h1 {
+main .info h1 {
     font-size: 4rem;
     color: var(--medium-color);
 }
 
-section .info h2 {
+main .info h2 {
     color: var(--light-color);
     font-size: 2.5rem;
     font-weight: 300;
     margin: 10px 0;
 }
 
-section .info a {
+main .info a {
     text-decoration: none;
     background-color: var(--light-color);
     padding: 2px 30px;
@@ -75,7 +75,7 @@ section .info a {
     color: var(--dark-color);
 }
 
-section .info a .text {
+main .info a .text {
     position: absolute;
     top: 0;
     left: 0;
@@ -99,11 +99,11 @@ section .info a .text {
     -o-transition: 0.2s ease;
 }
 
-section .info a .text:hover {
+main .info a .text:hover {
     opacity: 1;
 }
 
-section .img img {
+main .img img {
     height: var(--image-size);
     width: var(--image-size);
     border-radius: 50%;
@@ -112,7 +112,7 @@ section .img img {
 
 /*TEC*/
 
-section .tec {
+main .tec {
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -120,7 +120,7 @@ section .tec {
     position: relative;
 }
 
-section .tec .card {
+main .tec .card {
     height: var(--tec-card-size);
     width: var(--tec-card-size);
     background-color: var(--light-color);
@@ -130,11 +130,11 @@ section .tec .card {
     align-items: center;
 }
 
-section .tec .card img {
+main .tec .card img {
     width: 100px;
 }
 
-section .tec .text {
+main .tec .text {
     position: absolute;
     opacity: 0;
     height: var(--tec-card-size);
@@ -154,31 +154,41 @@ section .tec .text {
     -moz-transition: 0.4s ease-in-out;
     -ms-transition: 0.4s ease-in-out;
     -o-transition: 0.4s ease-in-out;
+
+    h3 {
+        font-size: 20px;
+    }
 }
 
-section .tec .text:hover {
+main .tec .text:hover {
     opacity: 1;
     top: 0;
 }
 
 /*SOBRE*/
 
-section .sobre {
+main .sobre {
     width: 80%;
     display: block;
     text-align: center;
     margin-bottom: 60px;
 }
 
-section .sobre p {
+main .sobre p {
     margin-top: 10px;
     font-size: 1.5rem;
     color: var(--light-color);
 }
 
+main .sobre h3 {
+    margin-bottom: 12px;
+    font-size: 3rem;
+    color: var(--light-color);
+}
+
 /*PROJECTS*/
 
-section .projects {
+main .projects {
     width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -188,7 +198,7 @@ section .projects {
     gap: 40px;
 }
 
-section .projects h3 {
+main .projects h3 {
     margin-bottom: 5px;
     font-weight: bold;
     display: flex;
@@ -196,16 +206,16 @@ section .projects h3 {
     gap: 8px;
 }
 
-section .projects h3 img {
+main .projects h3 img {
     height: 18px;
 }
 
-section .projects a {
+main .projects a {
     text-decoration: none;
     color: var(--light-color);
 }
 
-section .projects .card img {
+main .projects .card img {
     height: var(--proj-card-size);
     width: var(--proj-card-size);
     background-color: var(--light-color);
@@ -218,11 +228,11 @@ section .projects .card img {
     -o-transition: 0.3s ease-in-out;
 }
 
-section .projects .card {
+main .projects .card {
     position: relative;
 }
 
-section .projects .proj .text {
+main .projects .proj .text {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -242,20 +252,21 @@ section .projects .proj .text {
     gap: 16px;
 }
 
-section .proj .text p {
+main .proj .text p {
     font-size: 1.6rem;
-    max-width: 60%;
+    max-width: 80%;
     text-align: center;
     color: white;
 }
 
-section .proj .text h1 {
+main .proj .text h1 {
     border: 2px solid var(--light-color);
     color: var(--light-color);
     padding: 10px 20px;
+    border-radius: 12px;
 }
 
-section .projects .proj .text:hover {
+main .projects .proj .text:hover {
     opacity: 1;
 }
 
@@ -277,7 +288,7 @@ footer .card img {
 
 /*RESPONSE*/
 @media (max-width: 900px) {
-    section .projects {
+    main .projects {
         grid-template-columns: initial;
     }
 }
@@ -288,7 +299,7 @@ footer .card img {
         --tec-card-size: 100px;
         --proj-card-size: 390px;
     }
-    section .tec .card img {
+    main .tec .card img {
         width: 60px;
     }
 }
@@ -300,11 +311,11 @@ footer .card img {
         --proj-card-size: 350px;
     }
 
-    section .profile {
+    main .profile {
         gap: 30px;
     }
 
-    section .tec .card img {
+    main .tec .card img {
         width: 40px;
     }
 }
@@ -317,43 +328,43 @@ footer .card img {
         --image-size: 200px;
     }
 
-    section .tec {
+    main .tec {
         width: 90%;
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
 
-    section .tec .card {
+    main .tec .card {
         margin: 0 auto 20px auto;
     }
 
-    section .tec .card img {
+    main .tec .card img {
         width: 60px;
     }
 
-    section .tec .card .text {
+    main .tec .card .text {
         height: fit-content;
         width: fit-content;
     }
 
-    section .profile {
+    main .profile {
         gap: 10px;
         flex-direction: column-reverse;
     }
 
-    section .projects {
+    main .projects {
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 60px;
     }
 
-    section .projects h3 {
+    main .projects h3 {
         margin-bottom: 25px;
         font-size: 3rem;
     }
 
-    section .projects .proj .text {
+    main .projects .proj .text {
         position: initial;
         width: 100%;
         background-color: transparent;
@@ -363,24 +374,24 @@ footer .card img {
         cursor: initial;
     }
 
-    section .projects .proj .proj-img {
+    main .projects .proj .proj-img {
         width: 100%;
     }
 
-    section .projects .proj .text h1 {
+    main .projects .proj .text h1 {
         cursor: pointer;
         color: var(--dark-color);
         border-color: var(--dark-color);
     }
 
-    section .tec .card {
+    main .tec .card {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         padding: 12px;
     }
 
-    section .tec .text {
+    main .tec .text {
         position: initial;
         opacity: 1;
         background-color: transparent;
@@ -396,7 +407,7 @@ footer .card img {
         --image-size: 150px;
     }
 
-    section .profile {
+    main .profile {
         gap: 5px;
     }
 }
