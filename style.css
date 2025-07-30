@@ -178,6 +178,7 @@ main {
         flex-direction: column;
         gap: 20px;
         .proj {
+            max-width: var(--proj-card-size);
             h3 {
                 color: var(--bold);
                 display: flex;
@@ -202,45 +203,6 @@ main {
         display: flex;
         align-items: center;
         gap: 24px;
-    }
-}
-
-@media (min-width: 720px) {
-    :root {
-        --image-size: 280px;
-        --tech-image-size: 80px;
-    }
-
-    header {
-        gap: 24px;
-        .profile .text {
-            gap: 12px;
-            h1 {
-                font-size: 40px;
-            }
-            h2 {
-                font-size: 24px;
-            }
-            p {
-                font-size: 18px;
-            }
-        }
-        .buttons {
-            gap: 12px;
-            .top a {
-                gap: 12px;
-                span {
-                    font-size: 18px;
-                }
-            }
-            .bottom {
-                font-size: 18px;
-            }
-        }
-    }
-
-    main section h1 {
-        font-size: 20px;
     }
 }
 
