@@ -12,8 +12,8 @@
     --light-color: #fff;
     --dark-color: #8f1ef2;
     --medium-color: #e100e6;
-    --image-size: 200px;
-    --tech-image-size: 60px;
+    --image-size: 520px;
+    --tech-image-size: 200px;
     --proj-card-size: 400px;
     --footer-image-size: 40px;
     overflow-x: hidden;
@@ -27,20 +27,19 @@
 
 body {
     display: flex;
-    gap: 20px;
+    gap: 64px;
     flex-direction: column;
     min-height: 100vh;
     width: 100vw;
     background-color: var(--bg-color);
-    padding: 24px 32px;
+    padding: 40px;
     color: var(--light-color);
 }
 
 header {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    max-width: 400px;
+    gap: 32px;
     margin: 0 auto;
     .profile {
         text-align: center;
@@ -48,23 +47,24 @@ header {
             width: var(--image-size);
             height: var(--image-size);
             border-radius: 100%;
+            margin: 12px 0;
         }
 
         .text {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 32px;
             h1 {
-                font-size: 32px;
+                font-size: 80px;
                 font-weight: 700;
             }
             h2 {
-                font-size: 20px;
+                font-size: 48px;
                 color: var(--medium-color);
                 font-weight: 600;
             }
             p {
-                font-size: 12px;
+                font-size: 32px;
                 font-weight: 400;
             }
         }
@@ -72,21 +72,26 @@ header {
     .buttons {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 24px;
         .top {
             display: flex;
-            gap: 8px;
+            gap: 24px;
             a {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                gap: 10px;
-                padding: 10px 24px;
+                gap: 12px;
+                padding: 32px;
                 flex: 1;
-                border: 1px solid var(--light-color);
-                border-radius: 10px;
+                border: 2px solid var(--light-color);
+                border-radius: 32px;
+
+                img{
+                    width: 48px;
+                }
+
                 span {
-                    font-size: 14px;
+                    font-size: 40px;
                     font-weight: 600;
                 }
             }
@@ -97,18 +102,19 @@ header {
             justify-content: center;
             align-items: center;
             gap: 4px;
-            padding: 10px 24px;
+            padding: 32px;
             flex: 1;
-            border: 1px solid var(--light-color);
-            border-radius: 10px;
-            font-size: 14px;
+            border: 2px solid var(--light-color);
+            border-radius: 32px;
+            font-size: 40px;
             font-weight: 600;
         }
     }
     .utils {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+        padding: 0 20px;
         .row {
             display: flex;
             justify-content: space-between;
@@ -116,15 +122,19 @@ header {
             .left {
                 display: flex;
                 align-items: center;
-                gap: 4px;
+                gap: 8px;
+                img{
+                    width: 32px;
+                }
                 span {
                     color: var(--bold);
-                    font-size: 12px;
+                    font-size: 32px;
                     font-weight: 400;
                 }
             }
             h3 {
-                font-size: 12px;
+                text-align: right;
+                font-size: 32px;
                 font-weight: 400;
             }
         }
@@ -135,14 +145,14 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 64px;
     section {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 32px;
         h1 {
             color: var(--dark-color);
-            font-size: 14px;
+            font-size: 40px;
             font-weight: 900;
         }
     }
@@ -150,16 +160,15 @@ main {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         place-items: center;
-        gap: 12px;
+        gap: 32px;
         .card {
             display: flex;
             flex-direction: column;
             background-color: var(--light-color);
             width: fit-content;
-            padding: 12px;
-            border-radius: 10px;
-            max-width: 120px;
-            gap: 8px;
+            padding: 32px;
+            border-radius: 12px;
+            gap: 12px;
             aspect-ratio: 1/1;
             width: 100%;
             img {
@@ -167,7 +176,7 @@ main {
             }
             span {
                 color: #191629;
-                font-size: 16px;
+                font-size: 24px;
                 font-weight: 600;
                 text-align: center;
             }
@@ -176,16 +185,18 @@ main {
     .projetos .content {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 32px;
         .proj {
-            max-width: var(--proj-card-size);
             h3 {
                 color: var(--bold);
                 display: flex;
                 align-items: center;
-                font-size: 12;
+                font-size: 48px;
                 font-weight: 400;
                 margin-bottom: 4px;
+                img{
+                    width: 48px;
+                }
             }
             .proj-img {
                 width: 100%;
@@ -193,8 +204,8 @@ main {
             }
 
             p {
-                margin: 4px 0;
-                font-size: 12px;
+                margin: 18px 0;
+                font-size: 32px;
                 font-weight: 400;
             }
         }
@@ -203,11 +214,16 @@ main {
         display: flex;
         align-items: center;
         gap: 24px;
+
+        a img{
+            width: 120px;
+        }
     }
 }
 
 @media (min-width: 1024px) {
     :root {
+        --image-size: 80px;
         --tech-image-size: 80px;
     }
 
@@ -218,6 +234,7 @@ main {
     header {
         gap: 20px;
         .profile {
+            max-width: 300px;
             .text {
                 h1 {
                     margin-top: 10px;
