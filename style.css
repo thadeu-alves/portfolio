@@ -205,7 +205,7 @@ main {
     }
 }
 
-@media (min-width: 860px) {
+@media (min-width: 1024px) {
     :root {
         --tech-image-size: 80px;
     }
@@ -260,7 +260,7 @@ main {
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
     body {
         flex-direction: row;
         gap: 28px;
