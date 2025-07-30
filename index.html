@@ -142,25 +142,19 @@
                 <div class="text">
                     <h1>Thadeu Alves</h1>
                     <h2>Frontend Developer</h2>
-                    <p>
-                        Lorem Ipsum is simply dummy text of
-                        the printing and typesetting
-                        industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever
-                        since the 1500s
-                    </p>
+                    <p class="sobre">...</p>
                 </div>
             </div>
             <div class="buttons">
                 <div class="top">
-                    <a href="/">
+                    <a href="#social">
                         <img
                             src="./assets/siga.svg"
                             alt="icone de seguir"
                         />
                         <span>Siga</span>
                     </a>
-                    <a href="/">
+                    <a href="#" id="share">
                         <img
                             src="./assets/comp.svg"
                             alt="icone de compartilhar"
@@ -168,7 +162,11 @@
                         <span>Comp.</span>
                     </a>
                 </div>
-                <a href="/" class="bottom">Fale comigo</a>
+                <a
+                    href="mailto:thadeualves.contato@gmail.com"
+                    class="bottom"
+                    >Fale comigo</a
+                >
             </div>
             <div class="utils">
                 <div class="row">
@@ -193,7 +191,91 @@
                 </div>
             </div>
         </header>
-        <main></main>
+        <main>
+            <section class="tech">
+                <h1>Tech Stack</h1>
+                <div class="content">
+                    <div class="card">
+                        <img
+                            src="./assets/tech/html.svg"
+                            alt="icone do html"
+                        />
+                        <span>HTML</span>
+                    </div>
+                    <div class="card">
+                        <img
+                            src="./assets/tech/css.svg"
+                            alt="icone do css"
+                        />
+                        <span>CSS</span>
+                    </div>
+                    <div class="card">
+                        <img
+                            src="./assets/tech/js.svg"
+                            alt="icone do javascript"
+                        />
+                        <span>Javascript</span>
+                    </div>
+                    <div class="card">
+                        <img
+                            src="./assets/tech/ts.svg"
+                            alt="icone do typescript"
+                        />
+                        <span>Typescript</span>
+                    </div>
+                    <div class="card">
+                        <img
+                            src="./assets/tech/react.svg"
+                            alt="icone do react js"
+                        />
+                        <span>React</span>
+                    </div>
+                    <div class="card">
+                        <img
+                            src="./assets/tech/tailwind.svg"
+                            alt="icone do tailwind css"
+                        />
+                        <span>Tailwind</span>
+                    </div>
+                </div>
+            </section>
+            <section class="projetos">
+                <h1>Projetos</h1>
+                <div class="content projects"></div>
+            </section>
+            <section class="social" id="social">
+                <h1>Social</h1>
+                <div class="content">
+                    <a
+                        href="https://www.linkedin.com/in/thadeualves/"
+                        aria-label="link para o linkedin"
+                    >
+                        <img
+                            src="./assets/social/linkedin.svg"
+                            alt="icone do linkedin"
+                        />
+                    </a>
+                    <a
+                        href="https://github.com/thadeu-alves"
+                        aria-label="link para o github"
+                    >
+                        <img
+                            src="./assets/social/github.svg"
+                            alt="icone do github"
+                        />
+                    </a>
+                    <a
+                        href="https://www.instagram.com/thadeualves.dev/"
+                        aria-label="link para o instagram"
+                    >
+                        <img
+                            src="./assets/social/insta.svg"
+                            alt="icone do instagram"
+                        />
+                    </a>
+                </div>
+            </section>
+        </main>
         <script src="script.js" type="module"></script>
     </body>
 </html>

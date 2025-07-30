@@ -1,8 +1,26 @@
 const sobre = document.querySelector(".sobre");
 const projects = document.querySelector(".projects");
+const shareBtn = document.querySelector("#share");
 
-document.querySelector(".title").innerText =
-    "<ThadeuAlves />";
+function share() {
+    if (navigator.share) {
+        navigator
+            .share({
+                title: "Thadeu Alves - Desenvolvedor Web",
+                text: "Conheça o portfólio de Thadeu Alves, Desenvolvedor Web",
+                url: "https://thadeualves.vercel.app/",
+            })
+            .catch(console.error);
+    } else {
+        window.open(
+            "https://api.whatsapp.com/send?text=Conheça%20o%20portfólio%20de%20Thadeu%20Alves%20-%20https%3A%2F%2Fthadeualves.vercel.app%2F",
+            "_blank"
+        );
+    }
+    return false;
+}
+
+shareBtn.addEventListener("click", share);
 
 async function fetchData() {
     const query = `
@@ -41,26 +59,22 @@ async function fetchData() {
 
 var data = await fetchData();
 
-sobre.innerHTML = `
-    <h3>Sobre mim</h3>
-    <p>${data.section.sobreMim}</p><p>${data.section.sobreMim2}</p>
-`;
+sobre.innerText = data.section.sobreMim;
 
 var projetos = [...data.allProjetos];
 projetos.map((e) => {
     projects.innerHTML += `
             <div class="proj">
                 <a href="${e.link}">
-                    <h3>${e.titulo}<img src="./assets/link.svg" alt="icone de link"></h3>
-    
-                    <div class="card">
-                            <img src=${e.imagem.url} class="proj-img" alt="imagem do site do/da ${e.titulo}">
+                    <h3>
+                        <img src="./assets/link.svg" alt="icone de link">${e.titulo}
+                    </h3>
 
-                            <div class="text">
-                                <p>${e.descricao}</p>
-                                <h1>acessar</h1>
-                            </div>
+                    <div>
+                        <p>${e.descricao}</p>
                     </div>
+                        
+                    <img src=${e.imagem.url} class="proj-img" alt="imagem do site do/da ${e.titulo}">
                 </a>
             </div>
     `;
