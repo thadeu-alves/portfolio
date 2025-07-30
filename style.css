@@ -205,7 +205,7 @@ main {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 860px) {
     :root {
         --tech-image-size: 80px;
     }
