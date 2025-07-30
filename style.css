@@ -205,6 +205,45 @@ main {
     }
 }
 
+@media (min-width: 720px) {
+    :root {
+        --image-size: 280px;
+        --tech-image-size: 80px;
+    }
+
+    header {
+        gap: 24px;
+        .profile .text {
+            gap: 12px;
+            h1 {
+                font-size: 40px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 18px;
+            }
+        }
+        .buttons {
+            gap: 12px;
+            .top a {
+                gap: 12px;
+                span {
+                    font-size: 18px;
+                }
+            }
+            .bottom {
+                font-size: 18px;
+            }
+        }
+    }
+
+    main section h1 {
+        font-size: 20px;
+    }
+}
+
 @media (min-width: 1024px) {
     :root {
         --tech-image-size: 80px;
