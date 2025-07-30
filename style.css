@@ -205,8 +205,14 @@ main {
 
             p {
                 margin: 18px 0;
-                font-size: 32px;
+                font-size: 42px;
                 font-weight: 400;
+            }
+        }
+
+        .proj:nth-child(1){
+            p{
+                font-size: 16px;
             }
         }
     }
