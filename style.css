@@ -210,8 +210,8 @@ main {
             }
         }
 
-        .proj:nth-child(1){
-            p{
+        .proj:nth-child(1) {
+            p {
                 font-size: 16px;
             }
         }
@@ -410,6 +410,11 @@ main {
 
     main {
         margin-left: 448px;
+
+        section {
+            gap: 8px;
+        }
+
         section h1 {
             font-size: 18px;
         }
