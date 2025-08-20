@@ -59,22 +59,26 @@ async function fetchData() {
 
 var data = await fetchData();
 
-sobre.innerText = data.section.sobreMim;
+sobre.innerHTML = `
+    <h3>Sobre mim</h3>
+    <p>${data.section.sobreMim}</p><p>${data.section.sobreMim2}</p>
+`;
 
 var projetos = [...data.allProjetos];
 projetos.map((e) => {
     projects.innerHTML += `
             <div class="proj">
                 <a href="${e.link}">
-                    <h3>
-                        <img src="./assets/link.svg" alt="icone de link">${e.titulo}
-                    </h3>
+                    <h3>${e.titulo}<img src="./assets/link.svg" alt="icone de link"></h3>
+    
+                    <div class="card">
+                            <img src=${e.imagem.url} class="proj-img" alt="imagem do site do/da ${e.titulo}">
 
-                    <div>
-                        <p>${e.descricao}</p>
+                            <div class="text">
+                                <p>${e.descricao}</p>
+                                <h1>acessar</h1>
+                            </div>
                     </div>
-                        
-                    <img src=${e.imagem.url} class="proj-img" alt="imagem do site do/da ${e.titulo}">
                 </a>
             </div>
     `;
