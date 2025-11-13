@@ -12,7 +12,7 @@
     --light-color: #fff;
     --dark-color: #8f1ef2;
     --medium-color: #e100e6;
-    --tec-card-size: 150px;
+    --tec-card-size: 140px;
     --proj-card-size: 400px;
     --image-size: 260px;
     --footer-image-size: 50px;
@@ -122,7 +122,7 @@ main .tec {
     margin-bottom: 60px;
     position: relative;
     width: 100%;
-    max-width: 1080px;
+    max-width: 800px;
 }
 
 main .tec .card {
