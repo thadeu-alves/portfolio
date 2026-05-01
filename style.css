@@ -126,6 +126,10 @@ body {
     transition: 0.3s;
 }
 
+.nav-links.open {
+    gap: 24px;
+}
+
 /* ══════════════════════
    MAIN
 ══════════════════════ */
@@ -500,7 +504,8 @@ main .proj .text p {
 
 .proj-header .proj-link-badge:hover img {
     opacity: 1;
-    filter: brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(260deg);
+    filter: brightness(0) invert(1) sepia(1) saturate(4)
+        hue-rotate(260deg);
 }
 
 /* tags / breadcrumbs */
