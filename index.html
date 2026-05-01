@@ -3,116 +3,45 @@
     <head>
         <!-- HTML Meta Tags -->
         <title>Thadeu Alves - Desenvolvedor Web</title>
-        <meta
-            name="description"
-            content="Desenvolvedor Web especializado em JavaScript, React e tecnologias modernas. Crio soluções responsivas e performáticas para a web."
-        />
+        <meta name="description" content="Desenvolvedor Web especializado em JavaScript, React e tecnologias modernas. Crio soluções responsivas e performáticas para a web." />
         <meta name="author" content="Thadeu Alves" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charset="UTF-8" />
         <meta name="theme-color" content="#8f1ef2" />
-        <meta
-            name="google-site-verification"
-            content="0VevQZv43308qGUe7DYBLb6dUr1MZmggGZ8wBQWgCEc"
-        />
-        <link
-            rel="canonical"
-            href="https://thadeualves.vercel.app/"
-        />
+        <meta name="google-site-verification" content="0VevQZv43308qGUe7DYBLb6dUr1MZmggGZ8wBQWgCEc" />
+        <link rel="canonical" href="https://thadeualves.vercel.app/" />
 
         <!-- Favicon -->
-        <link
-            rel="shortcut icon"
-            href="assets/js.svg"
-            type="image/x-icon"
-        />
-        <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="assets/js.svg"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="assets/js.svg"
-        />
+        <link rel="shortcut icon" href="assets/tech/js.svg" type="image/x-icon" />
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/tech/js.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/tech/js.svg" />
 
         <!-- Google Fonts -->
-        <link
-            rel="preconnect"
-            href="https://fonts.googleapis.com"
-        />
-        <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossorigin
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-            rel="stylesheet"
-        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
 
-        <!-- Open Graph Meta Tags -->
-        <meta
-            property="og:site_name"
-            content="Thadeu Alves"
-        />
+        <!-- Open Graph -->
+        <meta property="og:site_name" content="Thadeu Alves" />
         <meta property="og:locale" content="pt_BR" />
         <meta property="og:type" content="website" />
-        <meta
-            property="og:url"
-            content="https://thadeualves.vercel.app/"
-        />
-        <meta
-            property="og:title"
-            content="Thadeu Alves - Desenvolvedor Web"
-        />
-        <meta
-            property="og:description"
-            content="Desenvolvedor Web especializado em JavaScript, React e tecnologias modernas."
-        />
-        <meta
-            property="og:image"
-            content="https://opengraph.b-cdn.net/production/images/eb90086c-4768-4ab5-b201-7b4a2518fd09.png"
-        />
-        <meta
-            property="og:image:type"
-            content="image/png"
-        />
+        <meta property="og:url" content="https://thadeualves.vercel.app/" />
+        <meta property="og:title" content="Thadeu Alves - Desenvolvedor Web" />
+        <meta property="og:description" content="Desenvolvedor Web especializado em JavaScript, React e tecnologias modernas." />
+        <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/eb90086c-4768-4ab5-b201-7b4a2518fd09.png" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="858" />
         <meta property="og:image:height" content="343" />
 
-        <!-- Twitter Meta Tags -->
-        <meta
-            name="twitter:card"
-            content="summary_large_image"
-        />
-        <meta
-            property="twitter:domain"
-            content="thadeualves.vercel.app"
-        />
-        <meta
-            property="twitter:url"
-            content="https://thadeualves.vercel.app/"
-        />
-        <meta
-            name="twitter:title"
-            content="Thadeu Alves - Desenvolvedor Web"
-        />
-        <meta
-            name="twitter:description"
-            content="Desenvolvedor Web especializado em JavaScript, React e tecnologias modernas."
-        />
-        <meta
-            name="twitter:image"
-            content="https://opengraph.b-cdn.net/production/images/eb90086c-4768-4ab5-b201-7b4a2518fd09.png"
-        />
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="thadeualves.vercel.app" />
+        <meta property="twitter:url" content="https://thadeualves.vercel.app/" />
+        <meta name="twitter:title" content="Thadeu Alves - Desenvolvedor Web" />
+        <meta name="twitter:description" content="Desenvolvedor Web especializado em JavaScript, React e tecnologias modernas." />
+        <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/eb90086c-4768-4ab5-b201-7b4a2518fd09.png" />
 
-        <!-- Schema.org Structured Data -->
+        <!-- Schema.org -->
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -128,86 +57,62 @@
             }
         </script>
 
-        <!-- CSS -->
         <link rel="stylesheet" href="style.css" />
     </head>
 
     <body>
+
+        <!-- ── NAVBAR ── -->
+        <nav class="navbar" id="navbar">
+            <div class="navbar-inner">
+                <a href="#home" class="nav-logo">TA</a>
+                <ul class="nav-links">
+                    <li><a href="#home" data-section="home">Início</a></li>
+                    <li><a href="#sobre" data-section="sobre">Sobre</a></li>
+                    <li><a href="#projetos" data-section="projetos">Projetos</a></li>
+                    <li><a href="#contato" data-section="contato">Contato</a></li>
+                </ul>
+                <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+
         <main>
+            <!-- ── HERO ── -->
             <section class="profile" id="home">
                 <div class="info">
                     <h1 class="title">Thadeu Alves</h1>
-                    <h2>Desenvolvedor Web</h2>
+                    <h2 class="typewriter-wrap">
+                        <span id="tw-text"></span><span class="tw-cursor"></span>
+                    </h2>
                     <a href="#contato">
-                        <div>Minhas Redes Socias</div>
-                        <div class="text">
-                            Github e Linkedin
-                        </div>
+                        <div>Minhas Redes Sociais</div>
+                        <div class="text">Github e Linkedin</div>
                     </a>
                 </div>
                 <div class="img">
-                    <img
-                        src="https://avatars.githubusercontent.com/u/78249846?v=4"
-                        alt="Imagem de Thadeu Alves."
-                    />
+                    <img src="https://avatars.githubusercontent.com/u/78249846?v=4" alt="Imagem de Thadeu Alves." />
                 </div>
             </section>
 
-            <section class="tec">
-                <div class="card">
-                    <img
-                        src="assets/tech/js.svg"
-                        alt="Ícone do JavaScript."
-                    />
-                    <div class="text">
-                        <h3>JavaScript</h3>
-                    </div>
+            <!-- ── TECH MARQUEE ── -->
+            <div class="tec-marquee-wrapper">
+                <p class="marquee-eyebrow">Stack tecnológica</p>
+                <div class="marquee-fade-left"></div>
+                <div class="marquee-fade-right"></div>
+                <div class="marquee-outer">
+                    <div class="marquee-track" id="marquee-track"></div>
                 </div>
+            </div>
 
-                <div class="card">
-                    <img
-                        src="assets/tech/ts.svg"
-                        alt="Ícone do Typescript."
-                    />
-                    <div class="text">
-                        <h3>TypeScript</h3>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img
-                        src="assets/tech/react.svg"
-                        alt="Ícone do React js."
-                    />
-                    <div class="text">
-                        <h3>React.js</h3>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img
-                        src="assets/tech/next.svg"
-                        alt="Ícone do Next js."
-                    />
-                    <div class="text">
-                        <h3>Next.js</h3>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img
-                        src="assets/tech/node.svg"
-                        alt="Ícone do Node js."
-                    />
-                    <div class="text"><h3>Node.js</h3></div>
-                </div>
-            </section>
-
+            <!-- ── SOBRE ── -->
             <section class="sobre" id="sobre">
                 <h3>Sobre mim</h3>
             </section>
 
-            <section class="projetos">
+            <!-- ── PROJETOS ── -->
+            <section class="projetos" id="projetos">
                 <h3>Projetos</h3>
                 <div class="projects"></div>
             </section>
@@ -215,30 +120,22 @@
 
         <footer id="contato">
             <div class="card">
-                <a
-                    href="https://www.linkedin.com/in/thadeualves/"
-                    ><img
-                        src="assets/social/linkedin.svg"
-                        alt="Icone do Linkedin."
-                /></a>
+                <a href="https://www.linkedin.com/in/thadeualves/" target="_blank" rel="noopener">
+                    <img src="assets/social/linkedin.svg" alt="Icone do Linkedin." />
+                </a>
             </div>
             <div class="card">
-                <a href="https://github.com/thadeu-alves"
-                    ><img
-                        src="assets/social/github.svg"
-                        alt="Icone do Github."
-                /></a>
+                <a href="https://github.com/thadeu-alves" target="_blank" rel="noopener">
+                    <img src="assets/social/github.svg" alt="Icone do Github." />
+                </a>
             </div>
             <div class="card">
-                <a
-                    href="https://www.instagram.com/thadeualves.dev/"
-                    ><img
-                        src="assets/social/insta.svg"
-                        alt="Icone do Instagram."
-                /></a>
+                <a href="https://www.instagram.com/thadeualves.dev/" target="_blank" rel="noopener">
+                    <img src="assets/social/insta.svg" alt="Icone do Instagram." />
+                </a>
             </div>
         </footer>
 
-        <script src="script.js" type="module"></script>
+        <script src="script.js?v=3" type="module"></script>
     </body>
 </html>
