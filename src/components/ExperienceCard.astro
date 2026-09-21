@@ -1,0 +1,211 @@
+---
+interface Props {
+  company: string;
+  role: string;
+  dateRange: string;
+  description: string;
+  tags?: string[];
+  link?: string;
+  current?: boolean;
+}
+
+const { company, role, dateRange, description, tags = [], link, current = false } = Astro.props;
+---
+
+<div class="exp-card">
+  <div class="exp-top">
+    <div class="exp-left">
+      <div class="exp-company-row">
+        {link ? (
+          <a href={link} target="_blank" rel="noopener" class="exp-company">{company}</a>
+        ) : (
+          <span class="exp-company">{company}</span>
+        )}
+      </div>
+      <span class="exp-role">{role}</span>
+    </div>
+    <div class="exp-right">
+      {current && <span class="exp-badge">Atual</span>}
+      <span class="exp-date">{dateRange}</span>
+    </div>
+  </div>
+
+  {tags.length > 0 && (
+    <div class="exp-tags">
+      {tags.map(tag => <span class="exp-tag">{tag}</span>)}
+    </div>
+  )}
+
+  <p class="exp-desc">{description}</p>
+
+  <div class="exp-body-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .exp-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-left: 3px solid var(--dark-color);
+    border-radius: 10px;
+    padding: 20px 24px;
+    background: rgba(255, 255, 255, 0.025);
+    width: 100%;
+  }
+
+  .exp-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .exp-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .exp-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .exp-company-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .exp-company {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--light-color);
+    text-decoration: none;
+  }
+
+  a.exp-company:hover {
+    color: var(--medium-color);
+    transition: color 0.2s;
+  }
+
+  .exp-role {
+    font-size: 1.35rem;
+    color: var(--medium-color);
+    font-weight: 500;
+  }
+
+  .exp-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .exp-date {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+  }
+
+  .exp-badge {
+    font-size: 1.0rem;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 20px;
+    background: rgba(143, 30, 242, 0.2);
+    color: var(--dark-color);
+    border: 1px solid rgba(143, 30, 242, 0.4);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .exp-tag {
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(143, 30, 242, 0.18);
+    color: rgba(225, 0, 230, 0.9);
+    border: 1px solid rgba(225, 0, 230, 0.2);
+    letter-spacing: 0.02em;
+  }
+
+  .exp-desc {
+    font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+
+  /* MDX body content */
+  .exp-body-content :global(p) {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+
+  .exp-body-content :global(p:first-child) {
+    margin-top: 0;
+  }
+
+  .exp-body-content :global(ul) {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 4px;
+  }
+
+  .exp-body-content :global(li) {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.58);
+    line-height: 1.65;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .exp-body-content :global(li)::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--dark-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .exp-body-content :global(strong) {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 700;
+  }
+
+  @media (max-width: 520px) {
+    .exp-top {
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .exp-right {
+      align-items: flex-start;
+      flex-direction: row-reverse;
+      gap: 10px;
+    }
+  }
+</style>

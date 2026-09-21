@@ -4,9 +4,19 @@ import Navbar from '../components/Navbar.astro';
 import Typewriter from '../components/Typewriter';
 import TechMarquee from '../components/TechMarquee.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+import EducationCard from '../components/EducationCard.astro';
 import { getCollection } from 'astro:content';
 
-const projects = await getCollection('projects');
+const projects    = await getCollection('projects');
+
+const rawExperiences = (await getCollection('experience')).sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+const experiences = await Promise.all(rawExperiences.map(async (exp) => {
+  const { Content } = await exp.render();
+  return { data: exp.data, Content };
+}));
+
+const educations = (await getCollection('education')).sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
 ---
 
 <Layout>
@@ -60,6 +70,45 @@ const projects = await getCollection('projects');
       </p>
     </section>
 
+    <!-- ── EXPERIÊNCIA ── -->
+    <section class="experiencia" id="experiencia">
+      <h3>Experiência</h3>
+      <div class="exp-list">
+        {experiences.map(({ data, Content }) => (
+          <ExperienceCard
+            company={data.company}
+            role={data.role}
+            dateRange={data.dateRange}
+            description={data.description}
+            tags={data.tags}
+            link={data.link}
+            current={data.current}
+          >
+            <Content />
+          </ExperienceCard>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── EDUCAÇÃO ── -->
+    <section class="educacao" id="educacao">
+      <h3>Educação</h3>
+      <div class="edu-list">
+        {educations.map(edu => (
+          <EducationCard
+            institution={edu.data.institution}
+            course={edu.data.course}
+            dateRange={edu.data.dateRange}
+            description={edu.data.description}
+            tags={edu.data.tags}
+            credential={edu.data.credential}
+            credentialUrl={edu.data.credentialUrl}
+            isCertification={edu.data.isCertification}
+          />
+        ))}
+      </div>
+    </section>
+
     <!-- ── PROJETOS ── -->
     <section class="projetos" id="projetos">
       <h3>Projetos</h3>
@@ -79,28 +128,32 @@ const projects = await getCollection('projects');
 
   <!-- ── FOOTER / CONTATO ── -->
   <footer id="contato">
-    <div class="social-card">
-      <a href="https://www.linkedin.com/in/thadeualves/" target="_blank" rel="noopener">
-        <img src="/assets/social/linkedin.svg" alt="Icone do Linkedin." width="50" height="50" />
-      </a>
+    <div class="footer-social">
+      <div class="social-card">
+        <a href="https://www.linkedin.com/in/thadeualves/" target="_blank" rel="noopener">
+          <img src="/assets/social/linkedin.svg" alt="Icone do Linkedin." width="50" height="50" />
+        </a>
+      </div>
+      <div class="social-card">
+        <a href="https://github.com/thadeu-alves" target="_blank" rel="noopener">
+          <img src="/assets/social/github.svg" alt="Icone do Github." width="50" height="50" />
+        </a>
+      </div>
+      <div class="social-card">
+        <a href="https://www.instagram.com/thadeualves.dev/" target="_blank" rel="noopener">
+          <img src="/assets/social/insta.svg" alt="Icone do Instagram." width="50" height="50" />
+        </a>
+      </div>
     </div>
-    <div class="social-card">
-      <a href="https://github.com/thadeu-alves" target="_blank" rel="noopener">
-        <img src="/assets/social/github.svg" alt="Icone do Github." width="50" height="50" />
-      </a>
-    </div>
-    <div class="social-card">
-      <a href="https://www.instagram.com/thadeualves.dev/" target="_blank" rel="noopener">
-        <img src="/assets/social/insta.svg" alt="Icone do Instagram." width="50" height="50" />
-      </a>
-    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-made">made with <span class="heart">&lt;3</span> by thadeu</p>
   </footer>
 </Layout>
 
 <script>
-  /* Scroll-reveal for project cards */
-  const cards = document.querySelectorAll<HTMLElement>('.projects .proj');
-  if (cards.length) {
+  function revealOnScroll(selector: string) {
+    const items = document.querySelectorAll<HTMLElement>(selector);
+    if (!items.length) return;
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -110,13 +163,17 @@ const projects = await getCollection('projects');
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
-    cards.forEach((card, i) => {
-      card.style.transitionDelay = `${i * 80}ms`;
-      observer.observe(card);
+    items.forEach((el, i) => {
+      el.style.transitionDelay = `${i * 80}ms`;
+      observer.observe(el);
     });
   }
+
+  revealOnScroll('.projects .proj');
+  revealOnScroll('.exp-list .exp-card');
+  revealOnScroll('.edu-list .edu-card');
 </script>
 
 <style>
@@ -189,6 +246,20 @@ const projects = await getCollection('projects');
     border: 4px solid var(--light-color);
   }
 
+  /* ── SECTION HEADINGS ── */
+  .sobre h3,
+  .experiencia h3,
+  .educacao h3,
+  .projetos h3 {
+    margin-bottom: 18px;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 500;
+    text-align: center;
+  }
+
   /* ── SOBRE ── */
   .sobre {
     width: 80%;
@@ -204,15 +275,30 @@ const projects = await getCollection('projects');
     color: var(--light-color);
   }
 
-  .sobre h3,
-  .projetos h3 {
-    margin-bottom: 18px;
-    font-size: 1.1rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.35);
-    font-weight: 500;
-    text-align: center;
+  /* ── EXPERIÊNCIA ── */
+  .experiencia {
+    width: 80%;
+    max-width: 720px;
+    margin-bottom: 60px;
+  }
+
+  .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* ── EDUCAÇÃO ── */
+  .educacao {
+    width: 80%;
+    max-width: 720px;
+    margin-bottom: 60px;
+  }
+
+  .edu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   /* ── PROJECTS ── */
@@ -228,10 +314,16 @@ const projects = await getCollection('projects');
 
   /* ── FOOTER ── */
   footer {
-    padding-bottom: 60px;
+    padding: 20px 0 52px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-social {
+    display: flex;
     align-items: center;
     gap: 20px;
   }
@@ -245,6 +337,23 @@ const projects = await getCollection('projects');
   .social-card img:hover {
     transform: translateY(-3px);
     filter: brightness(1.2);
+  }
+
+  .footer-divider {
+    width: 48px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .footer-made {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-made .heart {
+    color: #e85d8a;
+    font-weight: 700;
   }
 
   /* ── RESPONSIVE ── */
@@ -274,6 +383,12 @@ const projects = await getCollection('projects');
 
     .profile {
       gap: 30px;
+    }
+
+    .experiencia,
+    .educacao,
+    .sobre {
+      width: 90%;
     }
   }
 

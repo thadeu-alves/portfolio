@@ -1,0 +1,171 @@
+---
+interface Props {
+  institution: string;
+  course: string;
+  dateRange: string;
+  description?: string;
+  tags?: string[];
+  credential?: string;
+  credentialUrl?: string;
+  isCertification?: boolean;
+}
+
+const { institution, course, dateRange, description, tags = [], credential, credentialUrl, isCertification = false } = Astro.props;
+---
+
+<div class="edu-card">
+  <div class="edu-top">
+    <div class="edu-left">
+      <div class="edu-institution-row">
+        <span class="edu-institution">{institution}</span>
+        {isCertification && <span class="edu-cert-badge">Certificação</span>}
+      </div>
+      <span class="edu-course">{course}</span>
+    </div>
+    <span class="edu-date">{dateRange}</span>
+  </div>
+
+  {tags.length > 0 && (
+    <div class="edu-tags">
+      {tags.map(tag => <span class="edu-tag">{tag}</span>)}
+    </div>
+  )}
+
+  {description && <p class="edu-desc">{description}</p>}
+
+  {credentialUrl && (
+    <a class="edu-credential-link" href={credentialUrl} target="_blank" rel="noopener">
+      Ver credencial →
+    </a>
+  )}
+  {!credentialUrl && credential && (
+    <p class="edu-credential">ID: {credential}</p>
+  )}
+</div>
+
+<style>
+  .edu-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-left: 3px solid rgba(225, 0, 230, 0.5);
+    border-radius: 10px;
+    padding: 18px 24px;
+    background: rgba(255, 255, 255, 0.025);
+    width: 100%;
+  }
+
+  .edu-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .edu-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .edu-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .edu-institution-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .edu-institution {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--light-color);
+  }
+
+  .edu-cert-badge {
+    font-size: 1.0rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(225, 0, 230, 0.12);
+    color: rgba(225, 0, 230, 0.8);
+    border: 1px solid rgba(225, 0, 230, 0.25);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .edu-course {
+    font-size: 1.3rem;
+    color: rgba(225, 0, 230, 0.8);
+    font-weight: 500;
+  }
+
+  .edu-date {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .edu-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .edu-tag {
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(143, 30, 242, 0.18);
+    color: rgba(225, 0, 230, 0.9);
+    border: 1px solid rgba(225, 0, 230, 0.2);
+    letter-spacing: 0.02em;
+  }
+
+  .edu-desc {
+    font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .edu-credential-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: var(--dark-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s, opacity 0.2s;
+    opacity: 0.8;
+  }
+
+  .edu-credential-link:hover {
+    color: var(--medium-color);
+    opacity: 1;
+  }
+
+  .edu-credential {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.25);
+    font-family: monospace;
+    margin-top: 8px;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 520px) {
+    .edu-top {
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+</style>

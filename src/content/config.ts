@@ -12,4 +12,33 @@ const projects = defineCollection({
     }),
 });
 
-export const collections = { projects };
+const experience = defineCollection({
+  type: 'content',
+  schema: z.object({
+    company: z.string(),
+    role: z.string(),
+    dateRange: z.string(),
+    description: z.string(),
+    tags: z.array(z.string()).optional().default([]),
+    link: z.string().url().optional(),
+    current: z.boolean().optional().default(false),
+    order: z.number().optional().default(0),
+  }),
+});
+
+const education = defineCollection({
+  type: 'content',
+  schema: z.object({
+    institution: z.string(),
+    course: z.string(),
+    dateRange: z.string(),
+    description: z.string().optional(),
+    tags: z.array(z.string()).optional().default([]),
+    credential: z.string().optional(),
+    credentialUrl: z.string().url().optional(),
+    isCertification: z.boolean().optional().default(false),
+    order: z.number().optional().default(0),
+  }),
+});
+
+export const collections = { projects, experience, education };

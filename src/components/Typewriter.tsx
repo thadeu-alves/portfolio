@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 
 const PHRASES = [
-  'Desenvolvedor Web',
-  'React Developer',
-  'Frontend Engineer',
-  'TypeScript Enthusiast',
+  'Full Stack Developer',
+  'Desenvolvedor Full Stack',
+  'SaaS & AI Agents',
+  'TypeScript · Next.js',
   'Node.js Developer',
+  'AI Agent Builder',
+  'Remote BR/Internacional',
 ];
 
 interface State {
