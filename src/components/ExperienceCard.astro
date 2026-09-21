@@ -2,6 +2,7 @@
 interface Props {
   company: string;
   role: string;
+  logo?: string;
   dateRange: string;
   description: string;
   tags?: string[];
@@ -9,11 +10,14 @@ interface Props {
   current?: boolean;
 }
 
-const { company, role, dateRange, description, tags = [], link, current = false } = Astro.props;
+const { company, role, logo, dateRange, description, tags = [], link, current = false } = Astro.props;
 ---
 
 <div class="exp-card">
   <div class="exp-top">
+    {logo && (
+      <img class="exp-logo" src={logo} alt={`Logo ${company}`} width="50" height="50" />
+    )}
     <div class="exp-left">
       <div class="exp-company-row">
         {link ? (
@@ -63,16 +67,27 @@ const { company, role, dateRange, description, tags = [], link, current = false 
 
   .exp-top {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
     gap: 12px;
     margin-bottom: 14px;
+  }
+
+  .exp-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    margin-top: 2px;
   }
 
   .exp-left {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    flex: 1;
+    min-width: 0;
   }
 
   .exp-company-row {

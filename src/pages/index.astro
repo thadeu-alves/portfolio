@@ -78,6 +78,7 @@ const educations = (await getCollection('education')).sort((a, b) => (a.data.ord
           <ExperienceCard
             company={data.company}
             role={data.role}
+            logo={data.logo}
             dateRange={data.dateRange}
             description={data.description}
             tags={data.tags}
@@ -98,6 +99,7 @@ const educations = (await getCollection('education')).sort((a, b) => (a.data.ord
           <EducationCard
             institution={edu.data.institution}
             course={edu.data.course}
+            logo={edu.data.logo}
             dateRange={edu.data.dateRange}
             description={edu.data.description}
             tags={edu.data.tags}

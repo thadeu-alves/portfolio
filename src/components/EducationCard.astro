@@ -2,6 +2,7 @@
 interface Props {
   institution: string;
   course: string;
+  logo?: string;
   dateRange: string;
   description?: string;
   tags?: string[];
@@ -10,11 +11,14 @@ interface Props {
   isCertification?: boolean;
 }
 
-const { institution, course, dateRange, description, tags = [], credential, credentialUrl, isCertification = false } = Astro.props;
+const { institution, course, logo, dateRange, description, tags = [], credential, credentialUrl, isCertification = false } = Astro.props;
 ---
 
 <div class="edu-card">
   <div class="edu-top">
+    {logo && (
+      <img class="edu-logo" src={logo} alt={`Logo ${institution}`} width="50" height="50" />
+    )}
     <div class="edu-left">
       <div class="edu-institution-row">
         <span class="edu-institution">{institution}</span>
@@ -63,16 +67,27 @@ const { institution, course, dateRange, description, tags = [], credential, cred
 
   .edu-top {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
     gap: 12px;
     margin-bottom: 10px;
+  }
+
+  .edu-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    margin-top: 2px;
   }
 
   .edu-left {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    flex: 1;
+    min-width: 0;
   }
 
   .edu-institution-row {
