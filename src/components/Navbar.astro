@@ -1,0 +1,161 @@
+---
+---
+
+<nav id="navbar" class="navbar">
+  <div class="navbar-inner">
+    <a href="#home" class="nav-logo">TA</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home"     data-section="home">Início</a></li>
+      <li><a href="#sobre"    data-section="sobre">Sobre</a></li>
+      <li><a href="#projetos" data-section="projetos">Projetos</a></li>
+      <li><a href="#contato"  data-section="contato">Contato</a></li>
+    </ul>
+    <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<script>
+  const navbar       = document.getElementById('navbar')!;
+  const navLinksList = document.getElementById('nav-links')!;
+  const menuBtn      = document.getElementById('nav-menu-btn')!;
+  const navLinks     = document.querySelectorAll<HTMLAnchorElement>('.nav-links a[data-section]');
+  const sections     = document.querySelectorAll<HTMLElement>('section[id], footer[id]');
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(a => a.classList.toggle('active', a.dataset.section === id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => sectionObserver.observe(s));
+
+  menuBtn.addEventListener('click', () => navLinksList.classList.toggle('open'));
+  navLinks.forEach(a => a.addEventListener('click', () => navLinksList.classList.remove('open')));
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--navbar-h);
+    background: transparent;
+    transition: background 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .navbar.scrolled {
+    background: rgba(25, 22, 41, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .navbar-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+  }
+
+  .nav-logo {
+    font-size: 2rem;
+    font-weight: 800;
+    text-decoration: none;
+    background: linear-gradient(90deg, var(--dark-color), var(--medium-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.04em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: color 0.2s, background 0.2s;
+    font-weight: 400;
+  }
+
+  .nav-links a:hover {
+    color: var(--light-color);
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .nav-links a.active {
+    color: var(--medium-color);
+    background: rgba(143, 30, 242, 0.12);
+  }
+
+  /* hamburger */
+  .nav-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-menu-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--light-color);
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  @media (max-width: 700px) {
+    .navbar-inner {
+      padding: 0 20px;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: var(--navbar-h);
+      left: 0;
+      right: 0;
+      background: rgba(25, 22, 41, 0.96);
+      flex-direction: column;
+      padding: 12px 20px 20px;
+      gap: 2px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-links a {
+      font-size: 2rem;
+      padding: 10px 14px;
+    }
+
+    .nav-menu-btn {
+      display: flex;
+    }
+  }
+</style>

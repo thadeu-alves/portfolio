@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════
+   ROOT / CSS VARS
+══════════════════════ */
+
+:root {
+  font-size: 62.5%;
+  --bg-color:          #191629;
+  --light-color:       #fff;
+  --dark-color:        #8f1ef2;
+  --medium-color:      #e100e6;
+  --tec-card-size:     140px;
+  --proj-card-size:    400px;
+  --image-size:        260px;
+  --footer-image-size: 50px;
+  --navbar-h:          62px;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-h);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-color);
+  padding-top: var(--navbar-h);
+}
+
+/* ══════════════════════
+   ANIMATIONS
+══════════════════════ */
+
+@keyframes tw-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ══════════════════════
+   TYPEWRITER CURSOR
+══════════════════════ */
+
+.tw-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 2.4rem;
+  background: var(--medium-color);
+  border-radius: 2px;
+  animation: tw-blink 0.65s steps(1) infinite;
+  margin-left: 1px;
+  flex-shrink: 0;
+}

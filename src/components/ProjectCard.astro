@@ -1,0 +1,196 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  title: string;
+  link: string;
+  description: string;
+  image: ImageMetadata;
+  tags?: string[];
+}
+
+const { title, link, description, image, tags = [] } = Astro.props;
+---
+
+<div class="proj">
+  <div class="proj-header">
+    <h3>{title}</h3>
+    <a
+      class="proj-link-badge"
+      href={link}
+      target="_blank"
+      rel="noopener"
+      title="Abrir projeto"
+    >
+      <img src="/assets/link.svg" alt="" width="14" height="14" />
+    </a>
+  </div>
+
+  {tags.length > 0 && (
+    <div class="proj-tags">
+      {tags.map(tag => <span class="proj-tag">{tag}</span>)}
+    </div>
+  )}
+
+  <a href={link} target="_blank" rel="noopener">
+    <div class="card">
+      <Image
+        src={image}
+        class="proj-img"
+        alt={`Imagem do projeto ${title}`}
+        width={400}
+        height={400}
+      />
+      <div class="text">
+        <p>{description}</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+<style>
+  .proj {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .proj.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .proj-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .proj-header h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--light-color);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .proj-link-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    flex-shrink: 0;
+  }
+
+  .proj-link-badge:hover {
+    border-color: var(--medium-color);
+    background: rgba(225, 0, 230, 0.1);
+  }
+
+  .proj-link-badge img {
+    width: 14px;
+    height: 14px;
+    filter: brightness(0) invert(1);
+    opacity: 0.6;
+    transition: opacity 0.2s, filter 0.2s;
+  }
+
+  .proj-link-badge:hover img {
+    opacity: 1;
+    filter: brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(260deg);
+  }
+
+  .proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .proj-tag {
+    font-size: 1.05rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(143, 30, 242, 0.18);
+    color: rgba(225, 0, 230, 0.9);
+    border: 1px solid rgba(225, 0, 230, 0.2);
+    letter-spacing: 0.02em;
+  }
+
+  /* card */
+  a {
+    text-decoration: none;
+    color: var(--light-color);
+    display: block;
+  }
+
+  .card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .proj-img {
+    height: var(--proj-card-size);
+    width: var(--proj-card-size);
+    display: block;
+    object-fit: cover;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: 5px 2px 15px 1px rgba(0, 0, 0, 0.7);
+    transition: transform 0.35s ease;
+  }
+
+  .proj:hover .proj-img {
+    transform: scale(1.03);
+  }
+
+  .text {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(143, 30, 242, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    gap: 16px;
+  }
+
+  .card:hover .text {
+    opacity: 1;
+  }
+
+  .text p {
+    font-size: 1.6rem;
+    max-width: 80%;
+    text-align: center;
+    color: white;
+  }
+
+  @media (max-width: 480px) {
+    .text {
+      position: static;
+      opacity: 1;
+      background: transparent;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .text p {
+      color: var(--light-color);
+    }
+  }
+</style>

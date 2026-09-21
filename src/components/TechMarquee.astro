@@ -1,0 +1,161 @@
+---
+import { techs } from '../data/techs';
+---
+
+<div class="tec-marquee-wrapper">
+  <p class="marquee-eyebrow">Stack tecnológica</p>
+  <div class="marquee-fade-left"></div>
+  <div class="marquee-fade-right"></div>
+  <div class="marquee-outer">
+    <div class="marquee-track">
+      {techs.map(tech => (
+        <div class="marquee-card">
+          <img src={tech.img} alt={tech.name} width="64" height="64" />
+          <span>{tech.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .tec-marquee-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 60px;
+    overflow: hidden;
+  }
+
+  .marquee-eyebrow {
+    text-align: center;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+
+  .marquee-fade-left,
+  .marquee-fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .marquee-fade-left {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-color), transparent);
+  }
+
+  .marquee-fade-right {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-color), transparent);
+  }
+
+  .marquee-outer {
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+  }
+
+  .marquee-card {
+    height: var(--tec-card-size);
+    width: var(--tec-card-size);
+    background-color: var(--light-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: default;
+  }
+
+  .marquee-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(143, 30, 242, 0.35);
+  }
+
+  .marquee-card img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+  }
+
+  .marquee-card span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  @media (max-width: 480px) {
+    :root {
+      --tec-card-size: 100px;
+    }
+
+    .marquee-card img {
+      width: 44px;
+      height: 44px;
+    }
+
+    .marquee-card span {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 320px) {
+    :root {
+      --tec-card-size: 80px;
+    }
+  }
+</style>
+
+<script>
+  function initMarquee() {
+    const outer = document.querySelector('.marquee-outer');
+    const track = document.querySelector('.marquee-track');
+    if (!outer || !track) return;
+
+    const cards = Array.from(track.children) as HTMLElement[];
+    if (!cards.length) return;
+
+    const GAP = 16;         // matches CSS gap
+    const DURATION = 20000; // ms per period
+
+    const cardW = (cards[0] as HTMLElement).offsetWidth;
+    const stepW = cardW + GAP;
+    const setPx = cards.length * stepW;
+
+    // Clone to 4 total sets — covers ultrawide viewports
+    for (let i = 1; i < 4; i++) {
+      cards.forEach(c => track.appendChild(c.cloneNode(true)));
+    }
+
+    // Animate exactly one period (0 → -setPx), seamless loop
+    const anim = track.animate(
+      [
+        { transform: 'translateX(0)' },
+        { transform: `translateX(-${setPx}px)` },
+      ],
+      { duration: DURATION, iterations: Infinity, easing: 'linear' }
+    );
+
+    // Start 30% through so the initial view is mid-stream
+    anim.currentTime = DURATION * 0.3;
+
+    outer.addEventListener('mouseenter', () => anim.pause());
+    outer.addEventListener('mouseleave', () => anim.play());
+  }
+
+  initMarquee();
+</script>
