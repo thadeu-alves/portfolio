@@ -1,6 +1,5 @@
 ---
 import { techs } from '../data/techs';
-const doubled = [...techs, ...techs];
 ---
 
 <div class="tec-marquee-wrapper">
@@ -9,7 +8,7 @@ const doubled = [...techs, ...techs];
   <div class="marquee-fade-right"></div>
   <div class="marquee-outer">
     <div class="marquee-track">
-      {doubled.map(tech => (
+      {techs.map(tech => (
         <div class="marquee-card">
           <img src={tech.img} alt={tech.name} width="64" height="64" />
           <span>{tech.name}</span>
@@ -65,11 +64,6 @@ const doubled = [...techs, ...techs];
     display: flex;
     gap: 16px;
     width: max-content;
-    animation: marquee-scroll 20s linear infinite;
-  }
-
-  .marquee-outer:hover .marquee-track {
-    animation-play-state: paused;
   }
 
   .marquee-card {
@@ -125,3 +119,43 @@ const doubled = [...techs, ...techs];
     }
   }
 </style>
+
+<script>
+  function initMarquee() {
+    const outer = document.querySelector('.marquee-outer');
+    const track = document.querySelector('.marquee-track');
+    if (!outer || !track) return;
+
+    const cards = Array.from(track.children) as HTMLElement[];
+    if (!cards.length) return;
+
+    const GAP = 16;         // matches CSS gap
+    const DURATION = 20000; // ms per period
+
+    const cardW = (cards[0] as HTMLElement).offsetWidth;
+    const stepW = cardW + GAP;
+    const setPx = cards.length * stepW;
+
+    // Clone to 4 total sets — covers ultrawide viewports
+    for (let i = 1; i < 4; i++) {
+      cards.forEach(c => track.appendChild(c.cloneNode(true)));
+    }
+
+    // Animate exactly one period (0 → -setPx), seamless loop
+    const anim = track.animate(
+      [
+        { transform: 'translateX(0)' },
+        { transform: `translateX(-${setPx}px)` },
+      ],
+      { duration: DURATION, iterations: Infinity, easing: 'linear' }
+    );
+
+    // Start 30% through so the initial view is mid-stream
+    anim.currentTime = DURATION * 0.3;
+
+    outer.addEventListener('mouseenter', () => anim.pause());
+    outer.addEventListener('mouseleave', () => anim.play());
+  }
+
+  initMarquee();
+</script>
