@@ -1,9 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
   title: string;
   link: string;
   description: string;
-  image: string;
+  image: ImageMetadata;
   tags?: string[];
 }
 
@@ -32,13 +35,12 @@ const { title, link, description, image, tags = [] } = Astro.props;
 
   <a href={link} target="_blank" rel="noopener">
     <div class="card">
-      <img
+      <Image
         src={image}
         class="proj-img"
         alt={`Imagem do projeto ${title}`}
-        width="400"
-        height="400"
-        loading="lazy"
+        width={400}
+        height={400}
       />
       <div class="text">
         <p>{description}</p>
