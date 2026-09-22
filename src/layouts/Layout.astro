@@ -25,6 +25,14 @@ const schemaOrg = {
     'https://github.com/thadeu-alves',
   ],
 };
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Programador Full Stack',
+  alternateName: 'Desenvolvedor Web',
+  url: 'https://thadeualves.vercel.app/',
+};
 ---
 
 <!doctype html>
@@ -74,6 +82,7 @@ const schemaOrg = {
 
     <!-- Schema.org -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 
     <Analytics />
     <SpeedInsights />
