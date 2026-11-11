@@ -1,0 +1,400 @@
+---
+import { Image } from 'astro:assets';
+import siteShot from '../assets/banner/mv2-site.webp';
+import reelShot from '../assets/banner/mv2-reel.webp';
+
+interface Props {
+  /** Link do vídeo no Instagram (Reels) */
+  videoUrl?: string;
+  /** Link da loja / página de produtos */
+  storeUrl?: string;
+}
+
+const {
+  videoUrl = 'https://www.instagram.com/p/DfnOjjkMnIQ/',
+  storeUrl = 'https://modas-variedadessg.netlify.app/',
+} = Astro.props;
+---
+
+<section class="mv2-wrapper" aria-labelledby="mv2-title">
+  <div class="mv2-banner">
+    <div class="mv2-glow" aria-hidden="true"></div>
+
+    <div class="mv2-copy">
+      <p class="mv2-tag">Novidade: versão 2.0</p>
+      <h2 class="mv2-title" id="mv2-title">O site da Modas &amp; Variedades ficou novo.</h2>
+      <p class="mv2-text">
+        Vitrine por categoria, busca mais esperta, carrinho reformulado e pedido
+        pronto no WhatsApp. Veja no vídeo tudo o que mudou.
+      </p>
+      <div class="mv2-actions">
+        <a class="mv2-btn mv2-btn--primary" href={videoUrl} target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <path d="M10 8.5v7l6-3.5z" fill="currentColor"></path>
+          </svg>
+          Ver o vídeo no Instagram
+        </a>
+        <a class="mv2-btn mv2-btn--ghost" href={storeUrl} target="_blank" rel="noopener">
+          Explorar produtos
+        </a>
+      </div>
+    </div>
+
+    <div class="mv2-visual">
+      <div class="mv2-back" aria-hidden="true">
+        <Image src={siteShot} alt="" width={460} loading="eager" />
+      </div>
+
+      <a
+        class="mv2-reel"
+        href={videoUrl}
+        target="_blank"
+        rel="noopener"
+        aria-label="Assistir ao vídeo da versão 2.0 no Instagram"
+      >
+        <p class="mv2-reel-label">REELS</p>
+        <Image src={reelShot} alt="" width={420} loading="eager" />
+        <span class="mv2-play" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#0B0B0C"><path d="M8 5v14l11-7z"></path></svg>
+        </span>
+        <p class="mv2-reel-caption">Chegou a versão 2.0</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mv2-wrapper {
+    width: 90%;
+    max-width: 1100px;
+    margin: 28px auto 20px;
+  }
+
+  .mv2-banner {
+    --mv2-bg: #0b0b0c;
+    --mv2-green: #25d366;
+    --mv2-green-hover: #1fb457;
+    --mv2-text: #ffffff;
+    --mv2-muted: #cfcfd2;
+
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 28px;
+    background: var(--mv2-bg);
+    color: var(--mv2-text);
+    padding: 56px 60px;
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .mv2-banner *,
+  .mv2-banner *::before,
+  .mv2-banner *::after {
+    box-sizing: border-box;
+  }
+
+  .mv2-glow {
+    position: absolute;
+    right: -120px;
+    top: -160px;
+    width: 760px;
+    height: 760px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(37, 211, 102, 0.18), rgba(37, 211, 102, 0));
+    pointer-events: none;
+  }
+
+  .mv2-copy {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .mv2-tag {
+    margin: 0;
+    align-self: flex-start;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: var(--mv2-green);
+    color: var(--mv2-bg);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .mv2-title {
+    margin: 0;
+    font-size: clamp(32px, 4.2vw, 50px);
+    line-height: 1.04;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--mv2-text);
+  }
+
+  .mv2-text {
+    margin: 0;
+    max-width: 620px;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--mv2-muted);
+  }
+
+  .mv2-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .mv2-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 52px;
+    padding: 0 28px;
+    border-radius: 999px;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s, border-color 0.15s;
+  }
+
+  .mv2-btn--primary {
+    background: var(--mv2-green);
+    color: var(--mv2-bg);
+  }
+
+  .mv2-btn--primary:hover {
+    background: var(--mv2-green-hover);
+  }
+
+  .mv2-btn--ghost {
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    color: var(--mv2-text);
+    font-weight: 500;
+  }
+
+  .mv2-btn--ghost:hover {
+    border-color: #fff;
+  }
+
+  .mv2-btn:focus-visible,
+  .mv2-reel:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+  }
+
+  .mv2-btn svg {
+    flex: none;
+  }
+
+  .mv2-visual {
+    position: relative;
+    flex: none;
+    width: 300px;
+    height: 380px;
+  }
+
+  .mv2-back {
+    position: absolute;
+    left: 0;
+    top: 46px;
+    width: 230px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #f4f2ee;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+    transform: rotate(-7deg);
+  }
+
+  .mv2-back :global(img),
+  .mv2-reel :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .mv2-reel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 210px;
+    height: 373px;
+    border-radius: 26px;
+    overflow: hidden;
+    background: #1a1a1c;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    text-decoration: none;
+    color: #fff;
+    transform: rotate(3deg);
+  }
+
+  .mv2-reel :global(img) {
+    position: absolute;
+    left: 0;
+    top: 96px;
+  }
+
+  .mv2-reel-label {
+    position: relative;
+    z-index: 1;
+    align-self: flex-start;
+    margin: 0;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.55);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  .mv2-play {
+    position: relative;
+    z-index: 1;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--mv2-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.15s;
+  }
+
+  .mv2-reel:hover .mv2-play {
+    transform: scale(1.08);
+  }
+
+  .mv2-reel-caption {
+    position: relative;
+    z-index: 1;
+    align-self: flex-start;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* ── Celular ── */
+  @media (max-width: 760px) {
+    .mv2-wrapper {
+      width: 92%;
+      margin: 20px auto 12px;
+    }
+
+    .mv2-banner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+      padding: 28px 24px;
+      border-radius: 24px;
+    }
+
+    .mv2-copy {
+      display: contents;
+    }
+
+    .mv2-tag {
+      order: 1;
+      font-size: 12px;
+      padding: 6px 14px;
+    }
+
+    .mv2-title {
+      order: 2;
+      font-size: 32px;
+    }
+
+    .mv2-text {
+      order: 3;
+      font-size: 15px;
+    }
+
+    .mv2-visual {
+      order: 4;
+      width: 100%;
+      height: 240px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mv2-back {
+      display: none;
+    }
+
+    .mv2-reel {
+      position: relative;
+      width: 136px;
+      height: 212px;
+      border-radius: 18px;
+      padding: 10px;
+    }
+
+    .mv2-reel :global(img) {
+      top: 52px;
+    }
+
+    .mv2-reel-label {
+      font-size: 10px;
+      padding: 3px 8px;
+    }
+
+    .mv2-play {
+      width: 46px;
+      height: 46px;
+    }
+
+    .mv2-play svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .mv2-reel-caption {
+      display: none;
+    }
+
+    .mv2-actions {
+      order: 5;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 0;
+    }
+
+    .mv2-btn {
+      width: 100%;
+      font-size: 16px;
+      min-height: 50px;
+    }
+
+    .mv2-glow {
+      left: -120px;
+      right: auto;
+      top: 220px;
+      width: 640px;
+      height: 420px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mv2-btn,
+    .mv2-play {
+      transition: none;
+    }
+  }
+</style>

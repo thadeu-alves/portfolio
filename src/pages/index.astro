@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
+import HighlightBanner from '../components/HighlightBanner.astro';
 import Typewriter from '../components/Typewriter';
 import TechMarquee from '../components/TechMarquee.astro';
 import ProjectCard from '../components/ProjectCard.astro';
@@ -45,6 +46,9 @@ const educations = (await getCollection('education')).sort((a, b) => (a.data.ord
 
     <!-- ── TECH MARQUEE ── -->
     <TechMarquee />
+
+    <!-- ── DESTAQUE: Modas & Variedades 2.0 ── -->
+    <HighlightBanner />
 
     <!-- ── SOBRE ── -->
     <section class="sobre" id="sobre">
